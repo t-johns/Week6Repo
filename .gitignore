@@ -2,3 +2,6 @@
 # Log file
 *.log
 bin/
+.classpath
+.project
+.gitignore
