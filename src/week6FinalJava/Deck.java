@@ -1,15 +1,12 @@
 package week6FinalJava;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import java.util.Random;
 
 public class Deck {
   // Create a basic deck of 52 cards
   public Deck() {} 
+  Random rand = new Random();
         
   ArrayList<String> suits = new ArrayList<>(); //assign suits
   int values; // assign amount of values
@@ -21,16 +18,50 @@ public class Deck {
     values = addValues(); // create values
     listOfCards = assembleDeck(suits, values); // add them together
     
-    System.out.println(values); 
-    System.out.println(suits);
-    System.out.println(listOfCards);
-    for (String card: listOfCards) {
-      System.out.println(card);
-    }
+
     return listOfCards;
   }
   
-  public ArrayList<String> assembleDeck(ArrayList suits, int values) {  // create method that returns array list of created cards  
+  public ArrayList<String> getListOfCards() { //prints current deck of cards
+    System.out.println();
+    return listOfCards;
+  }
+  
+  public void shuffle() { //shuffle deck
+    ArrayList<String> shuffledDeck = new ArrayList<>(); //temporary deck to hold shuffled cards
+    int deckSize = listOfCards.size();
+    
+    for (int i = deckSize; i > 0; i--) { // start loop of deck size
+      int randomCard = rand.nextInt(listOfCards.size()); // randomCard index to reference
+      String pulledCard = listOfCards.get(randomCard); // convert randomCard index to String
+      
+      shuffledDeck.add(pulledCard); //add pulledCard to temporary deck
+      listOfCards.remove(randomCard); //empty list as we create new temporary one
+      
+      //System.out.println("Pulled card is!!... " + pulledCard);
+    } listOfCards = shuffledDeck;
+    
+    return;
+  }
+    
+    
+  public void pullCards(int numCards) { //pull a random card in amount from the deck
+    boolean canDraw = (numCards <= listOfCards.size());
+    
+    if (canDraw) {
+      for (int i=numCards; i > 0 ; i--) {
+        int randomCard = rand.nextInt(listOfCards.size());  
+        String pulledCard = listOfCards.get(randomCard);
+        System.out.println("Pulled card is!!... " + pulledCard);
+        listOfCards.remove(randomCard);
+    }
+    } else {System.out.println("Not enough cards!");}
+    
+    return;
+    
+  }
+
+  public ArrayList<String> assembleDeck(ArrayList<String> suits, int values) {  // create method that returns array list of created cards  
     // ArrayList<String> deck = new ArrayList();
     ArrayList<String> deck = new ArrayList<>();
     int suitSize = values/suits.size(); // cards per suit
@@ -53,7 +84,7 @@ public class Deck {
     return deck; //full deck
   }
   
-  public StringBuilder assignFaceCards(ArrayList listOfCards) { // assign face card based on switch case of value
+  public StringBuilder assignFaceCards(ArrayList<String> listOfCards) { // assign face card based on switch case of value
     //getCardValues if(cardValue >= 10) {
     // switch{
     // 10:
@@ -71,6 +102,7 @@ public class Deck {
   }
   
   
+  
   private ArrayList<String> addSuits() {
     this.suits.add("Diamonds");
     this.suits.add("Clubs");
@@ -79,11 +111,6 @@ public class Deck {
     return this.suits;
   }
   
-  
-private void assignFaces(ArrayList listOfCards) { //
-  return;
-}
-
 
 
 public void introduce() {
@@ -98,8 +125,21 @@ public void introduce() {
   //values.get((values.get((values.length()-1)))));
   
 }
-  
 
+public void getDeckSize() {
+  System.out.println(listOfCards.size());
+  return;
+}
+  
+public void printDeckInfo() {
+  
+  //System.out.println(values); 
+  //System.out.println(suits);
+  //System.out.println(listOfCards);
+  for (String card: listOfCards) {
+    System.out.println(card);
+  }
+}
 }
 
 
