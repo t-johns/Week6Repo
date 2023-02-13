@@ -6,7 +6,7 @@ public class Card {
 
   
   String cardSuit;
-  int cardValue;
+  Integer cardValue;
   String title;
 
   StringBuilder cardName = new StringBuilder();
@@ -20,8 +20,8 @@ public class Card {
       cardName.append(value + " of " + suit); // assign numeric value
     } setFaceCard(suit, value); // else set face
     
-    }    
- 
+  }    
+  
 
   public Card setFaceCard(String suit, Integer value) { // assign face card based on switch case of value
     String title;
@@ -48,18 +48,20 @@ public class Card {
         cardName.append(title + " of  " + cardSuit);
         break;
     }
-    
     return card;
   }
   
-  public void getValue() { // print card value, face card titles referred  to as int values
+  
+  public Integer getValue() { // print card value, face card titles referred  to as int values
     System.out.println(cardValue);
-    return;
+    return cardValue;
   }
+  
   
   public String printCard() { // returns cardName in full as string
     return cardName.toString();
   }
+  
   
   public Card() { //set blank card constructor  
   }

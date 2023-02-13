@@ -26,7 +26,7 @@ public class Deck {
     
     for (int i=1; i <= players; i++) {
       Player player = new Player(); //create player instance
-      player.setPlayer(i); //set player name/number
+      //player.setPlayer(i); //set player name/number
       
       playerList.add(player);
           
@@ -80,12 +80,16 @@ public class Deck {
     return;
   }
   
-  public void drawCard() { //draw 1 card from top of library
-    int topCard = getDeckSize() - 1; // assign topCard as deckSize - 1
-    Card drawnCard = listOfCards.get(topCard);
-    System.out.println(drawnCard.printCard());
-    listOfCards.remove(drawnCard);
-     
+  public Card drawCard(Deck deck) { //draw 1 card from top of library    
+    int topCardIndex = getDeckSize() - 1; // assign topCard as deckSize - 1
+
+      Card drawnCard = listOfCards.get(topCardIndex);
+      listOfCards.remove(drawnCard); //remove from deck
+    return drawnCard;
+    //System.out.println(drawnCard.printCard()); //test print
+    
+    
+    
   }
   
   public void drawNum(int num) { // draw int num cards from top of deck
@@ -96,7 +100,7 @@ public class Deck {
       int topCard = getDeckSize() - 1; // assign topCard as deckSize - 1
         
       Card drawnCard = listOfCards.get(topCard);
-      System.out.println(drawnCard.printCard());
+      //System.out.println(drawnCard.printCard()); //print test
       listOfCards.remove(drawnCard);
     }
   } else {
@@ -140,8 +144,19 @@ public class Deck {
     return this.suits;
   }
   
-  public ArrayList<Card> getListOfCards() { //prints current deck of card object
-    return listOfCards;
+  public void getListOfCards() { //prints current deck of card object
+    ArrayList<String> cardList = new ArrayList<String>();
+    
+    for (int i=0; i<listOfCards.size(); i++) {
+      Card newCard = new Card();
+      newCard = listOfCards.get(i);
+      
+      cardList.add(newCard.printCard()); //buffer into new list
+      
+    } // enhanced for loop
+      System.out.println(cardList);; // print card and title
+
+    return; //returns list of cards
   }
   
   public int getDeckSize() { //return deck size
@@ -149,11 +164,17 @@ public class Deck {
     return deckSize;
   }
   
+  public void addToDeck(Card card) {
+    listOfCards.add(card);
+    return;
+  }
   
-public void printDeckInfo() { 
+  
+public void printDeckInfo(Deck deck) { 
   for (Card card: listOfCards) {
     System.out.println(card.printCard());
-    card.getValue();
+    card.getValue(); //reads card value
+    
     //System.out.println(card.toString());
   
   //System.out.println(values); 
@@ -161,6 +182,7 @@ public void printDeckInfo() {
   //System.out.println(listOfCards);
     //System.out.println(card.getValue());
   }
+  return;
 }
 }
 
