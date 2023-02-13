@@ -49,7 +49,7 @@ public class App {
       p2Value = p2Card.getValue();
       
       try {
-        TimeUnit.MILLISECONDS.sleep(265); //add delay for content
+        TimeUnit.MILLISECONDS.sleep(1000); //add delay for content
       }
       catch(InterruptedException ex) {
         ex.printStackTrace();
@@ -69,9 +69,11 @@ public class App {
     Integer p1Score = player1.getScore();
     Integer p2Score = player2.getScore();
     if (p1Score > p2Score) {
-      System.out.print("+++ Player 1 Winner, with a score of " + p1Score  + "! +++");
+      System.out.println("+++ Player 1 Winner, with a score of " + p1Score  + "! +++");
+      System.out.println("--- Player 2 Loser, with a score of " + p2Score  + "! ---");
     } else if (p1Score < p2Score) {
       System.out.println("+++ Player 2 Winner, with a score of " + p2Score  + "! +++");
+      System.out.println("--- Player 1 Loser, with a score of " + p1Score  + "! ---");
     } else {
       System.out.println("~~~ Game is a DRAW at " + p1Score + " ~~~");
 

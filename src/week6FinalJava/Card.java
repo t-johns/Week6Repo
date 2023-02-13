@@ -7,7 +7,7 @@ public class Card {
   
   String cardSuit;
   Integer cardValue;
-  String title;
+
 
   StringBuilder cardName = new StringBuilder();
   
