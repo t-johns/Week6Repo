@@ -12,8 +12,7 @@ public class App {
     Deck deck = new Deck(); //create deck instance
     deck.makeDeck(); //create standard  deck
     ArrayList<Player> players; 
-    players = playersPlaying(2);
-    // set amount of players
+    players = playersPlaying(2); // set amount of players
     
     Player player1 = players.get(0);
     Player player2 = players.get(1);
@@ -30,7 +29,8 @@ public class App {
     
     
     myApp.dealHands(deck, players);
-    myApp.playWAR(deck, players);
+    //player1.readHand();
+    //myApp.playWAR(deck, players);
     
     
   }
@@ -39,13 +39,13 @@ public class App {
   private void playWAR(Deck dec, ArrayList<Player> players) { //play war
     Player player1 = players.get(0);
     Player player2 = players.get(1); 
-    for (int i=0; i<26; i++) {
+    for (int i=0; i<26; i++) {      
       Card p1Card = player1.flipTop();
       int p1Value;
-      p1Value = p1Card.getValue();
-      
       Card p2Card = player2.flipTop();
       int p2Value;
+
+      p1Value = p1Card.getValue();
       p2Value = p2Card.getValue();
       
       try {
@@ -53,29 +53,42 @@ public class App {
       }
       catch(InterruptedException ex) {
         ex.printStackTrace();
-    }
+      }
+      
+      //System.out.println(p1Card.printCard());
+      //System.out.println(p2Card.printCard());
+      
       if (p1Value > p2Value) {
-        System.out.print("+++ Player 1 +++ ");        
-        System.out.println("--- Player 2 ---");
         player1.incrementScore();
+        System.out.print("\n+++ Player 1 ++ " + player1.getScore() + " | ");        
+        System.out.println(player2.getScore()+ " -- Player 2 ---");
+        System.out.println(p1Card.printCard());
+        System.out.println(p2Card.printCard());
+        
       } else if (p1Value < p2Value) {
-        System.out.print("--- Player 1 --- ");
-        System.out.println("+++ Player 2 +++ ");        
         player2.incrementScore();
+        System.out.print("\n--- Player 1 -- " + player1.getScore()+ " | ");
+        System.out.println(player2.getScore() + " ++ Player 2 +++");
+        System.out.println(p1Card.printCard());
+        System.out.println(p2Card.printCard());
+        
+        
       } else {
-        System.out.println("~~~ Player 1 ~~DRAW~~ Player 2 ~~~");
+        System.out.println("\n~~~ Player 1 ~~DRAW~~ Player 2 ~~~");
+        System.out.println(p1Card.printCard());
+        System.out.println(p2Card.printCard());
       }      
     }
     Integer p1Score = player1.getScore();
     Integer p2Score = player2.getScore();
     if (p1Score > p2Score) {
-      System.out.println("+++ Player 1 Winner, with a score of " + p1Score  + "! +++");
+      System.out.println("\n+++ Player 1 Winner, with a score of " + p1Score  + "! +++");
       System.out.println("--- Player 2 Loser, with a score of " + p2Score  + "! ---");
     } else if (p1Score < p2Score) {
-      System.out.println("+++ Player 2 Winner, with a score of " + p2Score  + "! +++");
+      System.out.println("\n+++ Player 2 Winner, with a score of " + p2Score  + "! +++");
       System.out.println("--- Player 1 Loser, with a score of " + p1Score  + "! ---");
     } else {
-      System.out.println("~~~ Game is a DRAW at " + p1Score + " ~~~");
+      System.out.println("\n~~~ Game is a DRAW at " + p1Score + "points. ~~~");
 
     }
     return;
@@ -112,17 +125,5 @@ public class App {
     
     return players; //return arraylist of players
   }
-//  public void introduce() {
-//    System.out.println("Pffffft, pffffft... The dealer shuffles his cards.");
-//    //System.out.println("Got a set of " +  deckSize + " here if you'd like.");
-//    System.out.print("Got them all, ");
-//    for (String suit: this.suits) {
-//      System.out.print(suit + ", ");
-//    }
-//    System.out.print("all ready to do your bidding");
-//    //System.out.println("What say you, value goes low of " + values.get(0) + "high of " );
-//    //values.get((values.get((values.length()-1)))));
-//    
-//  }
 
 }

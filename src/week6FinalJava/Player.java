@@ -1,7 +1,5 @@
 package week6FinalJava;
 
-import java.util.ArrayList;
-
 public class Player {
   
   int score = 0;  
@@ -27,13 +25,9 @@ public class Player {
   }
   
   public Card flipTop() { //flip top card of hand
-    Card flippedCard;
-
-      flippedCard = hand.drawCard(hand);
-    return flippedCard;
+    Card flippedCard = hand.drawCard(hand);
     
-
-
+    return flippedCard;
     }
   
   public void draw(Deck deck) { //draw card from deck to hand
@@ -49,10 +43,10 @@ public class Player {
   }
   
   public void readHand() {
-    hand.printDeckInfo(hand);
+    hand.printDeckInfo(hand); // print arraylist of cards, line by line
+    //hand.getListOfCards(); // print arraylist of cards in single line
   return;
   }
-  
   
   public int incrementScore() {
     score += 1;
@@ -68,9 +62,6 @@ public class Player {
   public Integer getScore() {
     return score;
   }
-//  public StringBuilder playerName() {
-//    
-//  }
 
   public void descPlayer() {
     System.out.println(playerName + " has " + score + " points and has "

@@ -26,23 +26,9 @@ public class Deck {
     
     for (int i=1; i <= players; i++) {
       Player player = new Player(); //create player instance
-      //player.setPlayer(i); //set player name/number
       
       playerList.add(player);
-          
-    }
-    
-//    for (int i=0; i<players; i++) {
-//      Deck hand = new Deck();
-//      
-//      for (int i=0; i<52; i++) {
-//
-//      hand.drawCard();
-//      
-//    }
-//    }
-    
-    
+    }   
     return;
   }
   
@@ -80,17 +66,17 @@ public class Deck {
     return;
   }
   
+  
   public Card drawCard(Deck deck) { //draw 1 card from top of library    
     int topCardIndex = getDeckSize() - 1; // assign topCard as deckSize - 1
 
       Card drawnCard = listOfCards.get(topCardIndex);
       listOfCards.remove(drawnCard); //remove from deck
-    return drawnCard;
-    //System.out.println(drawnCard.printCard()); //test print
-    
-    
-    
+      //System.out.println(drawnCard.printCard()); //test print
+      return drawnCard;
+     
   }
+  
   
   public void drawNum(int num) { // draw int num cards from top of deck
     boolean canDraw = (num <= listOfCards.size()); //make sure drawn cards < deck size
@@ -144,7 +130,7 @@ public class Deck {
     return this.suits;
   }
   
-  public void getListOfCards() { //prints current deck of card object
+  public void getListOfCards() { //prints current deck of card object on each new line
     ArrayList<String> cardList = new ArrayList<String>();
     
     for (int i=0; i<listOfCards.size(); i++) {
@@ -169,20 +155,13 @@ public class Deck {
     return;
   }
   
-  
-public void printDeckInfo(Deck deck) { 
-  for (Card card: listOfCards) {
-    System.out.println(card.printCard());
-    card.getValue(); //reads card value
-    
-    //System.out.println(card.toString());
-  
-  //System.out.println(values); 
-  //System.out.println(suits);
-  //System.out.println(listOfCards);
-    //System.out.println(card.getValue());
-  }
-  return;
+  public void printDeckInfo(Deck deck) { 
+    for (Card card: listOfCards) {
+      System.out.println(card.printCard());
+      card.getValue(); //reads card value
+      
+    }
+    return;
 }
 }
 

@@ -1,13 +1,10 @@
 package week6FinalJava;
 
-import javax.management.ValueExp;
 
 public class Card {
 
-  
   String cardSuit;
   Integer cardValue;
-
 
   StringBuilder cardName = new StringBuilder();
   
@@ -19,10 +16,9 @@ public class Card {
     if (value < 11) { // if less than 11
       cardName.append(value + " of " + suit); // assign numeric value
     } setFaceCard(suit, value); // else set face
-    
+    return;
   }    
   
-
   public Card setFaceCard(String suit, Integer value) { // assign face card based on switch case of value
     String title;
     Card card = new Card();
@@ -53,28 +49,19 @@ public class Card {
   
   
   public Integer getValue() { // print card value, face card titles referred  to as int values
-    System.out.println(cardValue);
+    //System.out.println(cardValue);
     return cardValue;
   }
-  
   
   public String printCard() { // returns cardName in full as string
     return cardName.toString();
   }
   
-  
   public Card() { //set blank card constructor  
+    return;
   }
 
   
-   
-//  public Class setCardValue(Integer value) {
-//    cardValue = value;
-//    return card.toString();
-//  }
-  
-  
-
 }
 
 
