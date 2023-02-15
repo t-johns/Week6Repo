@@ -42,7 +42,6 @@ public class App {
   
   private void playWARDraw() {
     System.out.println("\n~~~ Game is a DRAW at " + 0 + " points. ~~~");
-    
     return;
   }
 
