@@ -21,6 +21,22 @@ public class Deck {
     return listOfCards;
   }
   
+  private ArrayList<String> addSuits() {
+    this.suits.add("Diamonds");
+    this.suits.add("Clubs");
+    this.suits.add("Hearts");
+    this.suits.add("Spades");
+    return this.suits;
+  }
+  
+  private int addValues() { // per suit, add value range of each 2-14, plus added card offset
+    for (String suit: this.suits) {
+      values += 13; // add value of cards, + cardIndex offset, per suit
+    }
+    return values;
+  }   
+  
+  
   public void dealHands(int players) { //assign amount of players and deal hand
     ArrayList<Player> playerList = new ArrayList<>();
     
@@ -92,8 +108,9 @@ public class Deck {
   } else {
     System.out.println("Not enough cards.");
   }
-    
+    return;
   }
+  
 
   public ArrayList<Card> assembleDeck(ArrayList<String> suits, int values) {  // create method that returns array list of created cards
     ArrayList<Card> deck = new ArrayList<>();
@@ -115,20 +132,6 @@ public class Deck {
   }
   
 
-  private int addValues() { // per suit, add value range of each 2-14, plus added card offset
-    for (String suit: this.suits) {
-      values += 13; // add value of cards, + cardIndex offset, per suit
-    }
-    return values;
-  }
-    
-  private ArrayList<String> addSuits() {
-    this.suits.add("Diamonds");
-    this.suits.add("Clubs");
-    this.suits.add("Hearts");
-    this.suits.add("Spades");
-    return this.suits;
-  }
   
   public void getListOfCards() { //prints current deck of card object on each new line
     ArrayList<String> cardList = new ArrayList<String>();
@@ -163,6 +166,7 @@ public class Deck {
     }
     return;
 }
+  
 }
 
 

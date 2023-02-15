@@ -26,7 +26,6 @@ public class Player {
   
   public Card flipTop() { //flip top card of hand
     Card flippedCard = hand.drawCard(hand);
-    
     return flippedCard;
     }
   
